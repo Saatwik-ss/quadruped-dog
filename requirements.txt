@@ -1,0 +1,7 @@
+pyyaml
+mujoco-py      # or mujoco>=2.3
+gymnasium
+stable-baselines3
+torch
+unitree_legged_sdk
+numpy
