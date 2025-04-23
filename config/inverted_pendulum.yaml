@@ -1,0 +1,31 @@
+robot:
+  name: invpend
+  gravity: [0, 0, -9.81]
+
+links:
+  - name: base
+    size: [0.1, 0.1, 0.1]
+    mass: 1.0
+
+  - name: pend
+    size: [0.02, 0.5, 0.02]
+    mass: 0.1
+
+joints:
+  - name: hinge
+    type: hinge
+    parent: base
+    child: pend
+    axis: [0, 1, 0]
+    range: [-180, 180]
+
+actuators:
+  - name: motor
+    joint: hinge
+    gear: 100
+    ctrllimited: true
+    ctrlrange: [-5, 5]
+
+sensors:
+  - type: jointpos
+    joint: hinge
