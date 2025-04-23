@@ -1,0 +1,55 @@
+<mujoco model="SimpleBot">
+
+  <compiler angle="degree"/> <!-- Use degrees for joint ranges -->
+
+  <option timestep="0.002" gravity="0 0 -9.81">
+    <flag contact="enable"/>
+  </option>
+
+  <visual>
+    <!-- Basic visualization settings -->
+    <map znear="0.01"/>
+  </visual>
+
+  <asset>
+    <!-- Add a texture and material for the ground -->
+    <texture type="2d" name="groundplane" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 .15 .2" width="200" height="200"/>
+    <material name="groundmat" texture="groundplane" texrepeat="2 2" reflectance="0.2"/>
+  </asset>
+
+  <default>
+      <!-- Default settings for joints and geoms -->
+      <joint type="hinge" damping="0.1" armature="0.01" limited="true"/>
+      <geom type="capsule" size="0.04" rgba="0.8 0.6 0.4 1"/>
+  </default>
+
+  <worldbody>
+    <!-- Ground Plane -->
+    <geom name="ground" type="plane" size="2 2 0.1" material="groundmat" condim="3"/>
+    <light pos="0 0 1.5" dir="0 0 -1"/>
+
+    <!-- Base Body (like a torso) -->
+    <body name="base" pos="0 0 0.5"> <!-- Start 0.5m above ground -->
+      <freejoint name="root"/> <!-- Allows the base to move freely -->
+      <geom type="box" size="0.15 0.1 0.05" name="base_geom" mass="3.0"/> <!-- Torso geometry -->
+
+      <!-- Thigh Body (Child of Base) -->
+      <!-- Position is relative to the parent (base) body -->
+      <body name="thigh_L" pos="0 0.12 0"> <!-- Attach left thigh slightly off-center -->
+        <!-- This joint connects 'thigh_L' body TO its parent 'base' body -->
+        <joint name="hip_L" axis="1 0 0" range="-45 45"/> <!-- Hinge around X-axis -->
+        <!-- Geometry for the thigh link, extending downwards -->
+        <geom fromto="0 0 0  0 0 -0.2" name="thigh_geom_L" mass="0.5"/>
+      </body> <!-- End Thigh Body -->
+
+    </body> <!-- End Base Body -->
+
+  </worldbody>
+
+  <actuator>
+    <!-- Motor for the hip joint -->
+    <!-- Ensure 'joint' attribute matches the joint name defined above -->
+    <motor name="hip_motor_L" joint="hip_L" gear="50" ctrllimited="true" ctrlrange="-1 1"/>
+  </actuator>
+
+</mujoco>
