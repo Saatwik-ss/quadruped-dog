@@ -6,9 +6,7 @@ import mujoco
 import mujoco.viewer as viewer
 from pathlib import Path
 
-xml = Path("mujoco/mybot.xml")   # adjust path if needed
+xml = Path("mujoco/quadruped_go2_like_generated.xml")   # adjust path if needed
 model = mujoco.MjModel.from_xml_path(str(xml))
 data  = mujoco.MjData(model)
-
-# blocking full-GUI: should pop up a window and let you rotate/zoom
 viewer.launch(model, data)
