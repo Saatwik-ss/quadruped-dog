@@ -6,7 +6,7 @@ import mujoco
 import mujoco.viewer as viewer
 from pathlib import Path
 
-xml = Path("mujoco/quadruped_go2_like_generated.xml")   # adjust path if needed
+xml = Path("mujoco/go2_like_dog.xml") 
 model = mujoco.MjModel.from_xml_path(str(xml))
 data  = mujoco.MjData(model)
 viewer.launch(model, data)
