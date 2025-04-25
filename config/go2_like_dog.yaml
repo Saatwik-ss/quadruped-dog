@@ -1,5 +1,5 @@
 # Configuration for a Go2-like Quadruped Robot Model
-# This YAML structure is intended to be parsed by a custom script (e.g., yaml2mjcf.py)
+# This YAML structure is intended to be parsed by the script yaml2mjcf.py
 # to generate the corresponding MuJoCo XML file.
 
 robot_name: "Go2 Like Quadruped"
@@ -32,11 +32,11 @@ defaults:
     size: 0.025     # Default radius/size for capsules
     material: "robot_mat"
     condim: 3
-    friction: [1.0, 0.1, 0.1] # Sliding, Torsional, Rolling
+    friction: [1.0, 0.1, 0.1] #sliding, torsional, rolling
     solref: [0.01, 1]     # Stiffness and damping parameters for contact
-    solimp: [0.95, 0.99, 0.001] # Contact impedance parameters
+    solimp: [0.95, 0.99, 0.001] # contact impedance parameters
   motor:
-    ctrlrange: [-1.0, 1.0] # Normalized control input range
+    ctrlrange: [-1.0, 1.0] #normalized control input range
     ctrllimited: true
 
 robot_body:
@@ -44,9 +44,9 @@ robot_body:
     name: "torso"
     pos: [0, 0, 0.3] # Initial position [x, y, z]
     geom_type: "box"
-    size: [0.2, 0.07, 0.04] # Half-lengths [dx, dy, dz]
+    size: [0.2, 0.07, 0.04] # Half lengths[dx,dy,dz]
     mass: 5.0
-    # inertial: {pos: [0,0,0], mass: 5.0, diag: [0.1, 0.1, 0.1]} # Optional: Manual Inertia
+    # inertial: {pos:[0,0,0],mass: 5.0,diag: [0.1,0.1,0.1]} # Optional: Manual Inertia
 
   legs:
     # Common parameters for leg segments
