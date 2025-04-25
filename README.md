@@ -4,9 +4,8 @@
 End-to-end pipeline:  
 1. Define your robot in YAML  
 2. Convert YAML → MJCF (MuJoCo XML)  
-3. Wrap in a Gymnasium env  
-4. Train with RL (TD3/SAC/PPO)  
-5. Deploy policy on real Unitree Go2
+3. Train with RL (TD3/SAC/PPO)  
+5. Deploy policy on real quadruped
 
 ## Quickstart
 ```bash
