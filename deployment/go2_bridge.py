@@ -1,5 +1,4 @@
 import os
-# ensure we use GLFW
 os.environ.setdefault('MUJOCO_GL', 'glfw')
 
 import mujoco
