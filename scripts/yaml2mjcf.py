@@ -1,3 +1,5 @@
+## COMMENT EACH NEW STEP ##
+
 import yaml
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -7,17 +9,17 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Helper function to convert list/tuple to space-separated string for XML attributes
+#function to convert list/tuple to space-separated string for XML attributes
 def format_list(data):
     if isinstance(data, bool): # Specific check for booleans
-        return str(data).lower() # Convert True -> "true", False -> "false"
+        return str(data).lower() # Convert True -> "true", False -> "false" (dont forget) 
     if isinstance(data, (list, tuple)):
         # Ensure all elements in list/tuple are also formatted correctly (handles nested lists/bools if needed)
         return " ".join(map(format_list, data))
     # For non-bool, non-list/tuple types, just convert to string
     return str(data)
 
-# Helper function for pretty printing XML
+#function for pretty printing XML
 def prettify_xml(elem):
     """Return a pretty-printed XML string for the Element."""
     rough_string = ET.tostring(elem, 'utf-8')
@@ -114,7 +116,7 @@ def create_mjcf_from_yaml(yaml_path, output_xml_path):
         "type": torso_config.get("geom_type", "box"),
         "size": format_list(torso_config.get("size", [0.2, 0.07, 0.04])),
         "mass": format_list(torso_config.get("mass", 5.0))
-        # Add material if needed, density etc.
+        # Add material density and others in future etc.
     }
     ET.SubElement(torso_el, "geom", attrib=torso_geom_attribs)
     if "inertial" in torso_config: # Optional manual inertial
@@ -123,7 +125,7 @@ def create_mjcf_from_yaml(yaml_path, output_xml_path):
         ET.SubElement(torso_el, "inertial", attrib=inertial_attribs)
 
 
-    # --- Legs ---
+    # Legs
     leg_definitions = {k: v for k, v in legs_config.items() if isinstance(v, dict)} # Get specific leg configs
     all_joints = [] # To store joint info for actuators/sensors
     all_motors = [] # To store motor info
@@ -301,6 +303,5 @@ if __name__ == "__main__":
     if not os.path.exists(output_dir):
         logging.info(f"Creating output directory: {output_dir}")
         os.makedirs(output_dir)
-
 
     create_mjcf_from_yaml(yaml_file, output_file)
