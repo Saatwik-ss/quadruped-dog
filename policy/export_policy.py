@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import torch
 from stable_baselines3 import TD3
 

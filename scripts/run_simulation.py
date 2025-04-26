@@ -1,7 +1,6 @@
 import mujoco
 import mujoco.viewer as viewer
 from pathlib import Path
-from gym_env.custom_env import calc_done
 
 def main():
     xml_path = Path(__file__).parent.parent / "mujoco" / "car.xml"
