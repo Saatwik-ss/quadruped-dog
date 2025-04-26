@@ -5,7 +5,7 @@ import mujoco
 import mujoco.viewer as viewer
 from pathlib import Path
 
-xml = Path("scripts\mujoco\mybot.xml") 
+xml = Path("scripts\mujoco\car.xml") 
 model = mujoco.MjModel.from_xml_path(str(xml))
 data  = mujoco.MjData(model)
 viewer.launch(model, data)
