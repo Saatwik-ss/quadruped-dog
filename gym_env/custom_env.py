@@ -6,7 +6,7 @@ import mujoco_py
 class CarEnv(gym.Env):
     def __init__(self):
         super(CarEnv, self).__init__()
-        self.model = mujoco_py.load_model_from_path("mujoco\car.xml")
+        self.model = mujoco_py.load_model_from_path("mujoco_xml\car.xml")
         self.sim = mujoco_py.MjSim(self.model)
         self.viewer = mujoco_py.MjViewer(self.sim)
         self.action_space = spaces.Box(low=np.array([-1.0, -1.0]), high=np.array([1.0, 1.0]), dtype=np.float32)
