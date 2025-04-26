@@ -11,7 +11,7 @@ End-to-end pipeline:
 ## Quickstart
 ```bash
 pip install -r requirements.txt
-python scripts/yaml2mjcf.py -y ../config/example_robot.yaml -o ../mujoco/mybot.xml
+python scripts/yaml2mjcf.py -y ../config/example_robot.yaml -o ../mujoco_xml/mybot.xml
 python training/train_td3.py
 python policy/export_policy.py
 python deployment/go2_bridge.py
