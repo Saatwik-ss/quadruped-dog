@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import mujoco
 import mujoco.viewer as viewer
 from pathlib import Path
