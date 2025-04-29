@@ -1,20 +1,21 @@
+#!/usr/bin/env python3
+import sys
+from pathlib import Path
+# Add the project root directory to Python path
+sys.path.append(str(Path(__file__).parent.parent))
+
 import mujoco
 import mujoco.viewer as viewer
-from pathlib import Path
-import os
-import sys
-script_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(script_dir)
-sys.path.insert(0, parent_dir)
+from gym_env.custom_env import calc_done
+
 def main():
-    xml_path = Path(__file__).parent.parent / "mujoco_xml" / "car.xml"
+    xml_path = Path(__file__).parent.parent / "mujoco" / "go2_like_dog.xml"
+    # load the model + data
     model = mujoco.MjModel.from_xml_path(str(xml_path))
     data  = mujoco.MjData(model)
+    # launch the full GUI
     viewer.launch(model, data)
 
 if __name__ == "__main__":
     main()
-    
-"""
-python -m scripts.run_simulation
-"""
+    print("Simulation has started.")
