@@ -1,0 +1,12 @@
+*.egg-info
+.venv
+MUJOCO_LOG.TXT
+mujoco_menagerie
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.DS_Store
+.env
+.vscode/
+.idea/
