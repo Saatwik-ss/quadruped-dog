@@ -1,12 +1,17 @@
-*.egg-info
-.venv
-MUJOCO_LOG.TXT
-mujoco_menagerie
+# macOS system file
+.DS_Store
+
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
-*.log
-*.DS_Store
-.env
-.vscode/
-.idea/
+
+# Python packaging
+*.egg-info/
+
+# Virtual environments
+.venv/
+
+# MuJoCo logs and artifacts
+MUJOCO_LOG.TXT
+mujoco_menagerie/
