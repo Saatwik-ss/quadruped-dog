@@ -1,4 +1,5 @@
 # Byte-compiled / optimized / DLL files
+<<<<<<< Updated upstream
 __pycache__/
 *.py[cod]
 *$py.class
@@ -6,19 +7,23 @@ __pycache__/
 .DS_Store
 
 # Python cache
+=======
+>>>>>>> Stashed changes
 __pycache__/
-*.pyc
-*.pyo
-
-# Python packaging
-*.egg-info/
-
-# Virtual environments
-.venv/
-
-# MuJoCo logs and artifacts
+*.py[cod]
+*$py.class
+.DS_Store
+__pycache__
+*.egg-info
+.venv
 MUJOCO_LOG.TXT
+<<<<<<< Updated upstream
 mujoco_menagerie/
+=======
+mujoco_menagerie
+
+
+>>>>>>> Stashed changes
 # C extensions
 *.so
 
